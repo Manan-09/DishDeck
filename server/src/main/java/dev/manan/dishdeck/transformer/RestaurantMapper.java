@@ -12,6 +12,6 @@ public interface RestaurantMapper {
 
     RestaurantMapper INSTANCE = Mappers.getMapper(RestaurantMapper.class);
 
-    void updateRestaurantFromRequest(RestaurantRequestDTO request, @MappingTarget Restaurant entity);
+    Restaurant updateRestaurantFromRequest(RestaurantRequestDTO request, @MappingTarget Restaurant entity);
 
 }

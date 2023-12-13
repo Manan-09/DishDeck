@@ -9,7 +9,6 @@ import static dev.manan.dishdeck.util.AlphanumericGenerator.generateAlphanumeric
 
 @Document
 @Data
-@NoArgsConstructor
 public class Restaurant {
 
     @Id
@@ -23,5 +22,9 @@ public class Restaurant {
         this.name = name;
         this.location = location;
         this.contact = contact;
+    }
+
+    public Restaurant() {
+        this.restaurantID = generateAlphanumeric(8);
     }
 }
