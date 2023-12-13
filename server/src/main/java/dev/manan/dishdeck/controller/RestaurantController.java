@@ -15,12 +15,12 @@ public class RestaurantController {
     private final RestaurantService restaurantService;
 
     @GetMapping("/{restaurantId}")
-    public ResponseEntity<Restaurant> fetchMovieById(@PathVariable String restaurantId) {
+    public ResponseEntity<Restaurant> fetchRestaurantById(@PathVariable String restaurantId) {
         return ResponseEntity.ok(restaurantService.fetchRestaurantById(restaurantId));
     }
 
     @PostMapping()
-    public ResponseEntity<Restaurant> createMovie(@RequestBody RestaurantRequestDTO requestDTO) {
+    public ResponseEntity<Restaurant> createRestaurant(@RequestBody RestaurantRequestDTO requestDTO) {
         return ResponseEntity.ok(restaurantService.createRestaurant(requestDTO));
     }
 }
