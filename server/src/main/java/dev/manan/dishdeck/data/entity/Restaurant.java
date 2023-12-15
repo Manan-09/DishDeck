@@ -1,5 +1,6 @@
 package dev.manan.dishdeck.data.entity;
 
+import dev.manan.dishdeck.configuration.RequestContext;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -25,6 +26,6 @@ public class Restaurant {
     }
 
     public Restaurant() {
-        this.restaurantID = generateAlphanumeric(8);
+        this.restaurantID = RequestContext.getCurrentUserId()+generateAlphanumeric(4);
     }
 }

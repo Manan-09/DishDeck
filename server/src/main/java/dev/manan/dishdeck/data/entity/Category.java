@@ -23,8 +23,8 @@ public class Category {
     private String name;
 
     public Category(String restaurantID, String name) {
-        this.categoryID = UUID.randomUUID().toString();
         this.restaurantID = restaurantID;
         this.name = name;
+        this.categoryID = UUID.randomUUID().toString();
     }
 }
