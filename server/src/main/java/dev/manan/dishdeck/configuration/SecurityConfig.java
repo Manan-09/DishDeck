@@ -25,20 +25,16 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final PasswordEncoder passwordEncoder;
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http.csrf().disable()
-//                .authorizeHttpRequests()
-//                .antMatchers("/api/public/**").permitAll() // Allow public APIs
-//                .antMatchers("/api/user/**").authenticated() // Require authentication for /api/user/**
-//                .and()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .authenticationProvider(authenticationProvider())
-//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-//                .build();
-//    }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http.csrf().disable().authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/api/public/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
 
     @Bean
     public AuthenticationProvider authenticationProvider(){

@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/restaurants")
-public class RestaurantController {
+@RequestMapping("/api/restricted/v1/restaurants")
+public class RestaurantRestrictedController {
 
     private final RestaurantService restaurantService;
 
-    @GetMapping("/{restaurantId}")
-    public ResponseEntity<Restaurant> fetchRestaurantById(@PathVariable String restaurantId) {
+    @DeleteMapping("/{restaurantId}")
+    public ResponseEntity<Restaurant> deleteRestaurantById(@PathVariable String restaurantId) {
         return ResponseEntity.ok(restaurantService.fetchRestaurantById(restaurantId));
     }
 
-    @PostMapping()
-    public ResponseEntity<Restaurant> createRestaurant(@RequestBody RestaurantRequestDTO requestDTO) {
+    @PutMapping("/{restaurantId}")
+    public ResponseEntity<Restaurant> updateRestaurant(@RequestBody RestaurantRequestDTO requestDTO, @PathVariable String restaurantId) {
         return ResponseEntity.ok(restaurantService.createRestaurant(requestDTO));
     }
 }

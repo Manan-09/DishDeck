@@ -20,4 +20,13 @@ public class RestaurantService {
     public Restaurant createRestaurant(RestaurantRequestDTO restaurantRequestDTO) {
         return  restaurantRepo.insert(RestaurantMapper.INSTANCE.updateRestaurantFromRequest(restaurantRequestDTO, new Restaurant()));
     }
+
+    public void deleteRestaurantById(String restaurantId) {
+        restaurantRepo.deleteById(restaurantId);
+    }
+
+    public Restaurant updateRestaurant(RestaurantRequestDTO restaurantRequestDTO, String restaurantId) {
+        Restaurant existingRestaurant = fetchRestaurantById(restaurantId);
+        return  restaurantRepo.save(RestaurantMapper.INSTANCE.updateRestaurantFromRequest(restaurantRequestDTO, existingRestaurant));
+    }
 }

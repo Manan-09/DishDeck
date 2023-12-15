@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RestaurantRepo extends MongoRepository<Restaurant, String> {
 
+    void deleteById(String id);
 }

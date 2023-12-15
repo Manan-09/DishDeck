@@ -26,6 +26,6 @@ public class Restaurant {
     }
 
     public Restaurant() {
-        this.restaurantID = RequestContext.getCurrentUserId()+generateAlphanumeric(4);
+        this.restaurantID = RequestContext.getCurrentUserId()+"_"+generateAlphanumeric(4);
     }
 }
