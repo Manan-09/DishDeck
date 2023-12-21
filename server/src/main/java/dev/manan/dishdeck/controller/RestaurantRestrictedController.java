@@ -20,12 +20,13 @@ public class RestaurantRestrictedController {
     }
 
     @DeleteMapping("/{restaurantId}")
-    public ResponseEntity<Restaurant> deleteRestaurantById(@PathVariable String restaurantId) {
-        return ResponseEntity.ok(restaurantService.fetchRestaurantById(restaurantId));
+    public ResponseEntity<String> deleteRestaurantById(@PathVariable String restaurantId) {
+        restaurantService.deleteRestaurantById(restaurantId);
+        return ResponseEntity.ok("SUCCESS");
     }
 
     @PutMapping("/{restaurantId}")
     public ResponseEntity<Restaurant> updateRestaurant(@RequestBody RestaurantRequestDTO requestDTO, @PathVariable String restaurantId) {
-        return ResponseEntity.ok(restaurantService.createRestaurant(requestDTO));
+        return ResponseEntity.ok(restaurantService.updateRestaurant(requestDTO, restaurantId));
     }
 }
