@@ -1,5 +1,6 @@
 package dev.manan.dishdeck.data.dto;
 
+import dev.manan.dishdeck.data.enums.FoodType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,5 +12,5 @@ public class ItemRequestDTO {
     private String name;
     private String description;
     private double price;
-    private boolean veg;
+    private String foodType;
 }

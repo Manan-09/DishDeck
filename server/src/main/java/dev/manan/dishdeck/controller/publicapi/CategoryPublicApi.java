@@ -25,6 +25,6 @@ public class CategoryPublicApi {
 
     @GetMapping("/restaurant/{restaurantId}")
     public ResponseEntity<List<Category>> fetchCategoriesForRestaurant(@PathVariable String restaurantId) {
-        return ResponseEntity.ok(categoryService.fetchCategoryByRestaurant(restaurantId));
+        return ResponseEntity.ok(categoryService.fetchCategoryByRestaurantId(restaurantId));
     }
 }

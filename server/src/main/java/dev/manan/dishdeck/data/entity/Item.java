@@ -11,7 +11,6 @@ import java.util.UUID;
 
 @Document
 @Data
-@NoArgsConstructor
 public class Item extends AuditableBean{
 
     @Id
@@ -33,6 +32,11 @@ public class Item extends AuditableBean{
         this.description = description;
         this.price = price;
         this.foodType = foodType;
+        this.audit();
+    }
+
+    public Item() {
+        this.itemID = UUID.randomUUID().toString();
         this.audit();
     }
 }

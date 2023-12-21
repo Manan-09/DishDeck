@@ -3,7 +3,6 @@ package dev.manan.dishdeck.service;
 import dev.manan.dishdeck.data.dto.CategoryRequestDTO;
 import dev.manan.dishdeck.data.entity.Category;
 import dev.manan.dishdeck.repo.CategoryRepo;
-import dev.manan.dishdeck.repo.CategoryRepo;
 import dev.manan.dishdeck.transformer.CategoryMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,7 @@ public class CategoryService {
         return categoryRepo.findById(categoryId).orElseThrow();
     }
 
-    public List<Category> fetchCategoryByRestaurant(String restaurantId) {
+    public List<Category> fetchCategoryByRestaurantId(String restaurantId) {
         return categoryRepo.findByRestaurantID(restaurantId);
     }
 
