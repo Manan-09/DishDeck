@@ -1,4 +1,4 @@
-package dev.manan.dishdeck.controller;
+package dev.manan.dishdeck.controller.restrictedapi;
 
 import dev.manan.dishdeck.data.dto.RestaurantRequestDTO;
 import dev.manan.dishdeck.data.entity.Restaurant;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/restricted/v1/restaurants")
-public class RestaurantRestrictedController {
+public class RestaurantRestrictedApi {
 
     private final RestaurantService restaurantService;
 

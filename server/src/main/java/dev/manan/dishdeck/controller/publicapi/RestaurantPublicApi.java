@@ -1,4 +1,4 @@
-package dev.manan.dishdeck.controller;
+package dev.manan.dishdeck.controller.publicapi;
 
 import dev.manan.dishdeck.data.entity.Restaurant;
 import dev.manan.dishdeck.service.RestaurantService;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/public/v1/restaurants")
-public class RestaurantPublicController {
+public class RestaurantPublicApi {
 
     private final RestaurantService restaurantService;
 

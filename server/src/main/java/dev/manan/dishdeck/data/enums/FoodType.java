@@ -1,4 +1,4 @@
-package dev.manan.dishdeck.data;
+package dev.manan.dishdeck.data.enums;
 
 public enum FoodType {
     VEG("Vegetarian"),

@@ -1,6 +1,6 @@
 package dev.manan.dishdeck.data.entity;
 
-import dev.manan.dishdeck.data.FoodType;
+import dev.manan.dishdeck.data.enums.FoodType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;

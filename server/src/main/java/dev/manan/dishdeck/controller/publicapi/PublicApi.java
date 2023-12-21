@@ -1,11 +1,10 @@
-package dev.manan.dishdeck.controller;
+package dev.manan.dishdeck.controller.publicapi;
 
 import dev.manan.dishdeck.data.dto.CreateUserDTO;
 import dev.manan.dishdeck.data.dto.LoginRequest;
 import dev.manan.dishdeck.data.entity.User;
 import dev.manan.dishdeck.service.JWTService;
 import dev.manan.dishdeck.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/public/v1")
 @RequiredArgsConstructor
-public class PublicController {
+public class PublicApi {
 
     private final AuthenticationManager authenticationManager;
     private final JWTService jwtService;
