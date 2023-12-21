@@ -1,6 +1,5 @@
 package dev.manan.dishdeck.controller;
 
-import dev.manan.dishdeck.data.dto.RestaurantRequestDTO;
 import dev.manan.dishdeck.data.entity.Restaurant;
 import dev.manan.dishdeck.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +16,5 @@ public class RestaurantPublicController {
     @GetMapping("/{restaurantId}")
     public ResponseEntity<Restaurant> fetchRestaurantById(@PathVariable String restaurantId) {
         return ResponseEntity.ok(restaurantService.fetchRestaurantById(restaurantId));
-    }
-
-    @PostMapping()
-    public ResponseEntity<Restaurant> createRestaurant(@RequestBody RestaurantRequestDTO requestDTO) {
-        return ResponseEntity.ok(restaurantService.createRestaurant(requestDTO));
     }
 }

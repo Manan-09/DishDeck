@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -46,6 +47,7 @@ public class User implements UserDetails {
         User user = new User();
         user.setUsername(createUserDTO.getUsername());
         user.setPassword(createUserDTO.getPassword());
+        user.setUserId(UUID.randomUUID().toString());
         return user;
     }
 }

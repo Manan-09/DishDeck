@@ -14,7 +14,7 @@ import static dev.manan.dishdeck.util.AlphanumericGenerator.generateAlphanumeric
 @Document
 @Data
 @NoArgsConstructor
-public class Category {
+public class Category extends AuditableBean{
 
     @Id
     private String categoryID; // Primary Key
@@ -26,5 +26,6 @@ public class Category {
         this.restaurantID = restaurantID;
         this.name = name;
         this.categoryID = UUID.randomUUID().toString();
+        this.audit();
     }
 }

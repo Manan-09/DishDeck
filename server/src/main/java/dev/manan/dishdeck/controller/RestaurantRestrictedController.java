@@ -14,6 +14,11 @@ public class RestaurantRestrictedController {
 
     private final RestaurantService restaurantService;
 
+    @PostMapping()
+    public ResponseEntity<Restaurant> createRestaurant(@RequestBody RestaurantRequestDTO requestDTO) {
+        return ResponseEntity.ok(restaurantService.createRestaurant(requestDTO));
+    }
+
     @DeleteMapping("/{restaurantId}")
     public ResponseEntity<Restaurant> deleteRestaurantById(@PathVariable String restaurantId) {
         return ResponseEntity.ok(restaurantService.fetchRestaurantById(restaurantId));
