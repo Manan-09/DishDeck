@@ -21,6 +21,7 @@ public class Item extends AuditableBean{
     private String restaurantID;// Foreign Key
     private String name;
     private String description;
+    private String image;
     private double price;
     private FoodType foodType;
 

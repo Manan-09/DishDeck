@@ -6,8 +6,10 @@ import dev.manan.dishdeck.repo.ItemRepo;
 import dev.manan.dishdeck.transformer.ItemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 import static dev.manan.dishdeck.service.AuthorisationHelper.validateOwnership;
 
@@ -16,6 +18,7 @@ import static dev.manan.dishdeck.service.AuthorisationHelper.validateOwnership;
 public class ItemService {
 
     private final ItemRepo itemRepo;
+    private final StorageService storageService;
 
     public Item fetchItemById(String itemId) {
         return itemRepo.findById(itemId).orElseThrow();
@@ -48,5 +51,16 @@ public class ItemService {
         existingItem = ItemMapper.INSTANCE.updateItemFromRequest(itemRequestDTO, existingItem);
         existingItem.audit();
         return  itemRepo.save(existingItem);
+    }
+
+    public Item uploadImage(String itemID, MultipartFile file) throws Exception {
+        final String key = UUID.randomUUID().toString();
+        Item item = fetchItemById(itemID);
+        validateOwnership(item);
+        final String oldImageKey = item.getImage();
+        storageService.uploadImage(key, file);
+        item.setImage(key);
+        storageService.deleteObject(oldImageKey);
+        return itemRepo.save(item);
     }
 }

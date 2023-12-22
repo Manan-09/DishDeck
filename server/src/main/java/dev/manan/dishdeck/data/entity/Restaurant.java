@@ -19,6 +19,7 @@ public class Restaurant extends AuditableBean{
     private String name;
     private String location;
     private String contact;
+    private String image;
 
     public Restaurant(String name, String location, String contact) {
         this.restaurantID = UUID.randomUUID().toString();
