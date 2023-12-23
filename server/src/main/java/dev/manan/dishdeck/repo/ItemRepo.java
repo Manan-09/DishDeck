@@ -14,6 +14,4 @@ public interface ItemRepo extends MongoRepository<Item, String> {
 
     List<Item> findByCategoryID(String categoryId);
 
-    List<Item> findByRestaurantID(String restaurantId);
-
 }

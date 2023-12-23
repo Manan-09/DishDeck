@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jre-slim
+FROM openjdk:17-jdk-slim
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -9,4 +9,4 @@ COPY build/libs/dishdeck-0.0.1-SNAPSHOT.jar /app/
 EXPOSE 8080
 
 # Specify the command to run on container startup
-CMD ["java", "-jar", "DishDeck-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "dishdeck-0.0.1-SNAPSHOT.jar"]
