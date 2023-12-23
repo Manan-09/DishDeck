@@ -1,18 +1,11 @@
-# Use a base image with a Java runtime environment (JRE)
-FROM openjdk:17-jdk-slim
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:11-jre-slim
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Define environment variables for JAR file name and other settings
-ENV JAR_FILE_NAME DishDeck-0.0.1-SNAPSHOT-plain.jar
-ENV SERVER_PORT 8080
+# Copy the JAR file into the container at /app
+COPY build/libs/dishdeck-0.0.1-SNAPSHOT.jar /app/
 
-# Copy the Spring Boot JAR file into the container
-COPY build/libs/${JAR_FILE_NAME} app.jar
-
-# Expose the port that your Spring Boot application listens on
-EXPOSE ${SERVER_PORT}
-
-# Define the command to run your Spring Boot application
-CMD ["java", "-jar", "app.jar"]
+# Specify the command to run on container startup
+CMD ["java", "-jar", "DishDeck-0.0.1-SNAPSHOT.jar"]
