@@ -37,7 +37,7 @@ public class ItemService {
     public List<Item> fetchItemByRestaurantId(String restaurantId, String text) {
         Criteria criteria = Criteria.where("restaurantID").is(restaurantId);
         if(nonNull(text) && text.length() > 0) {
-            String regexPattern = ".*" + text + ".*";
+            String regexPattern = ".*" + text.trim() + ".*";
             criteria.and("name").regex(regexPattern, "i");
         }
         Query query = new Query(criteria);
