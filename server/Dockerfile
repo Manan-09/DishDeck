@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy the JAR file into the container at /app
 COPY build/libs/dishdeck-0.0.1-SNAPSHOT.jar /app/
+EXPOSE 8080
 
 # Specify the command to run on container startup
 CMD ["java", "-jar", "DishDeck-0.0.1-SNAPSHOT.jar"]
