@@ -18,6 +18,8 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static dev.manan.dishdeck.util.Constant.UP_TIME;
 
@@ -33,9 +35,16 @@ public class PublicApi {
 
 
     @GetMapping("/health")
-    public ResponseEntity<String> checkHealth()  {
+    public ResponseEntity<Map<String, Object>> checkHealth() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy HH:mm:ss");
-        return ResponseEntity.ok("Up since:" + dateFormat.format(new Date(UP_TIME)));
+        Date currentDate = new Date(System.currentTimeMillis());
+
+        Map<String, Object> healthInfo = new HashMap<>();
+        healthInfo.put("time", dateFormat.format(currentDate));
+        healthInfo.put("since", dateFormat.format(new Date(UP_TIME)));
+        healthInfo.put("status", "ok");
+
+        return ResponseEntity.ok(healthInfo);
     }
 
     @PostMapping("/login")
