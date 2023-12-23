@@ -36,3 +36,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+jar {
+	archiveBaseName = 'DishDeck'
+	archiveVersion =  '0.0.1-SNAPSHOT'
+}

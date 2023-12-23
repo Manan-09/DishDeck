@@ -15,6 +15,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
+
+import static dev.manan.dishdeck.util.Constant.UP_TIME;
 
 @RestController
 @RequestMapping("/api/public/v1")
@@ -25,6 +30,13 @@ public class PublicApi {
     private final JWTService jwtService;
     private final UserService userService;
     private final StorageService storageService;
+
+
+    @GetMapping("/health")
+    public ResponseEntity<String> checkHealth()  {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy HH:mm:ss");
+        return ResponseEntity.ok("Up since:" + dateFormat.format(new Date(UP_TIME)));
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
