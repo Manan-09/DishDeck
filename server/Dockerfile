@@ -5,11 +5,11 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Define environment variables for JAR file name and other settings
-ENV JAR_FILE_NAME DishDeck-0.0.1-SNAPSHOT.jar
+ENV JAR_FILE_NAME DishDeck-0.0.1-SNAPSHOT-plain.jar
 ENV SERVER_PORT 8080
 
 # Copy the Spring Boot JAR file into the container
-COPY ./target/${JAR_FILE_NAME} app.jar
+COPY build/libs/${JAR_FILE_NAME} app.jar
 
 # Expose the port that your Spring Boot application listens on
 EXPOSE ${SERVER_PORT}
