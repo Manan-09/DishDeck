@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import static dev.manan.dishdeck.util.Constant.USER_ID;
+
 @Service
 @RequiredArgsConstructor
 public class JWTService {
@@ -25,6 +27,10 @@ public class JWTService {
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    public String extractUserId(String token) {
+        return extractClaim(token, claims -> claims.get(USER_ID, String.class));
     }
 
     public Date extractExpiration(String token) {
@@ -49,15 +55,15 @@ public class JWTService {
         return extractExpiration(token).before(new Date());
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails) {
-        final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    public Boolean validateToken(String token, String username) {
+        final String extractedUsername = extractUsername(token);
+        return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
 
 
     public String generateToken(String userName, String userId){
         Map<String,Object> claims=new HashMap<>();
-        claims.put("userId",userId);
+        claims.put(USER_ID,userId);
         return createToken(claims,userName);
     }
 

@@ -1,5 +1,6 @@
 package dev.manan.dishdeck.data.entity;
 
+import dev.manan.dishdeck.data.enums.FoodType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -10,8 +11,7 @@ import java.util.UUID;
 
 @Document
 @Data
-@NoArgsConstructor
-public class Item {
+public class Item extends AuditableBean{
 
     @Id
     private String itemID; // Primary Key
@@ -21,16 +21,23 @@ public class Item {
     private String restaurantID;// Foreign Key
     private String name;
     private String description;
+    private String image;
     private double price;
-    private boolean veg;
+    private FoodType foodType;
 
-    public Item(String itemID, String categoryID, String restaurantID, String name, String description, double price, boolean veg) {
+    public Item(String itemID, String categoryID, String restaurantID, String name, String description, double price, FoodType foodType) {
         this.itemID = UUID.randomUUID().toString();
         this.categoryID = categoryID;
         this.restaurantID = restaurantID;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.veg = veg;
+        this.foodType = foodType;
+        this.audit();
+    }
+
+    public Item() {
+        this.itemID = UUID.randomUUID().toString();
+        this.audit();
     }
 }

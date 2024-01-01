@@ -1,9 +1,6 @@
 package dev.manan.dishdeck.repo;
 
 import dev.manan.dishdeck.data.entity.User;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

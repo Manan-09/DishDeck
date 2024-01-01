@@ -29,7 +29,6 @@ public class UserService implements UserDetailsService {
     public User createUser(CreateUserDTO createUserDTO) {
         User user = User.from(createUserDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setUserId(createUniqueUserId());
         return userRepo.insert(user);
     }
 
